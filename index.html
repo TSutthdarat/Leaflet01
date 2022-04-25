@@ -1,0 +1,48 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>My first Leaflet</title>
+<!-- Link leaflet css and javascript-->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+
+</head>
+<br>
+<h1><center><b style='color:navy;'>Top 5 Landmarks in Switzerland</b></center></h1>
+
+<body style="background : url(switzerland.jpeg); width: 600px; height: 500px">
+
+<div id="map" style="width: 800px; height: 700px"></div>
+<script>
+var map = L.map('map').setView([47.054261741003316, 8.319650522722942],14);
+
+mapLink ='<a href="http://OpenStreetMap.CH">Sutthidarat_T</a>';
+
+L.tileLayer('https://tile.osm.ch/switzerland/{z}/{x}/{y}.png', {
+  attribution: 'Map data &copy; ' + mapLink,
+  maxZoom: 18,
+}).addTo(map);
+
+var navyIcon = L.icon({
+iconUrl: 'https://cdn-icons-png.flaticon.com/512/5928/5928126.png',
+shadowUrl: 'https://leafletjs.com/SlavaUkraini/examples/custom-icons/leaf-shadow.png',
+
+iconSize: [60, 70], // size of the icon
+shadowSize: [45, 60], // size of the shadow
+iconAnchor: [22, 94], // point of the icon which will correspond to marker's location
+shadowAnchor: [4, 62], // the same for the shadow
+popupAnchor: [-2, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+
+var marker = L.marker([47.054261741003316, 8.309650522722942],{icon:navyIcon,title:'Lucerne',opacity:1.5}).addTo(map).bindPopup("<b>ลูเซิร์น(Lucerne)</b>").openPopup();
+var marker = L.marker([46.68817332257166, 7.862689915915585],{icon:navyIcon,title:'Interlaken',opacity:1.5}).addTo(map).bindPopup("<b>อินเทอร์ลาเคน(Interlaken)</b>").openPopup();
+var marker = L.marker([46.54871931919085, 7.985449918121201],{icon:navyIcon,title:"Jungfraujoch",opacity:1.5}).addTo(map).bindPopup("<b>ยอดเขาจุงเฟรา(Jungfraujoch)</b>").openPopup();
+var marker = L.marker([47.385023081776126, 8.543753936337657],{icon:navyIcon,title:'Zurich',opacity:1.5}).addTo(map).bindPopup("<b>ซูริก(Zurich)</b><br> ").openPopup();
+var marker = L.marker([46.529338572843535, 6.631586754554114],{icon:navyIcon,title:"Lausanne",opacity:1.5}).addTo(map).bindPopup("<b>โลซาน(Lausanne)</b><br>").openPopup();
+
+</script>
+</body>
+</html>
